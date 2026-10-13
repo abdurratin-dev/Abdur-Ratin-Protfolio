@@ -11,7 +11,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative isolate flex min-h-screen items-center overflow-hidden px-5 py-16 bg-neutral-100 text-black sm:px-8 lg:px-10"
+      className="relative isolate flex min-h-screen items-center overflow-hidden px-5 py-16 bg-neutral-100 text-black sm:px-8 lg:px-10 scroll-mt-20"
     >
       {/* Background glow */}
       <div className="pointer-events-none absolute -left-40 top-20 -z-10 h-80 w-80 rounded-full bg-blue-700/20 blur-[120px]" />

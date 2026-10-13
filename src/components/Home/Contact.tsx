@@ -7,62 +7,105 @@ export default function ContactSection() {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    setLoading(true);
+    setStatus("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        const errorMessage = result.message || "Email not sent. Try again.";
+
+        setStatus(errorMessage);
+        toast.error(errorMessage);
+        return;
+      }
+
+      setStatus(result.message || "Message sent successfully!");
+      toast.success(result.message || "Message sent successfully!");
+      form.reset();
+    } catch {
+      const errorMessage = "Email not sent. Please try again.";
+
+      setStatus(errorMessage);
+      toast.error(errorMessage);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section
       id="contact"
-      className="min-h-screen bg-white px-5 py-16 text-[#191919] sm:px-8 lg:flex lg:items-center lg:justify-center lg:px-12"
+      className="min-h-screen bg-neutral-100 px-5 py-16 text-neutral-900 sm:px-8 sm:py-20 lg:flex lg:items-center lg:justify-center lg:px-12 scroll-mt-20"
     >
       <div className="mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
         {/* Contact Information */}
         <div className="flex flex-col">
-          <p className="mb-3 font-serif text-sm font-bold italic">Contact</p>
+          <p className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-neutral-500">
+            <span className="h-px w-8 bg-gradient-to-r from-blue-700 to-cyan-500" />
+            Contact
+          </p>
 
-          <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+          <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">
             REACH OUT ME
           </h2>
 
-          <p className="mt-5 max-w-sm text-sm leading-6 text-gray-700">
-            velakopa, Kurigram Sadar, Kurigram, Rongpur, Bangladesh.
+          <p className="mt-5 max-w-sm text-sm leading-7 text-neutral-600">
+            Velakopa, Kurigram Sadar, Kurigram, Rangpur, Bangladesh.
           </p>
 
-          <div className="mt-12 space-y-3">
+          <div className="mt-10 space-y-4 sm:mt-12">
             <a
-              href="tel:+770224440505"
-              className="block text-xl font-extrabold transition-colors hover:text-blue-700 sm:text-2xl"
+              href="tel:+8801323781740"
+              className="block w-fit max-w-full break-words text-xl font-extrabold tracking-tight transition-colors duration-300 hover:text-blue-700 sm:text-2xl lg:text-3xl"
             >
               +880 132 378 1740
             </a>
 
             <a
-              href="mailto:jacob360@gmail.com"
-              className="block break-all text-xl font-extrabold transition-colors hover:text-blue-700 sm:text-2xl"
+              href="mailto:ratinkhan039@gmail.com"
+              className="block max-w-fit break-all text-lg font-extrabold tracking-tight transition-colors duration-300 hover:text-blue-700 sm:text-xl lg:text-2xl"
             >
               ratinkhan039@gmail.com
             </a>
           </div>
 
-          <div className="mt-12 flex flex-wrap gap-x-5 gap-y-3 text-xs font-medium">
+          <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-xs font-bold tracking-wider sm:mt-12">
             <a
               href="https://www.facebook.com/share/1CT6TDugXk/"
               target="_blank"
-              rel="noreferrer"
-              className="hover:text-blue-700"
+              rel="noopener noreferrer"
+              className="transition-colors duration-300 hover:text-blue-700"
             >
               FACEBOOK
             </a>
+
             <a
               href="https://wa.me/8801323781740"
               target="_blank"
-              rel="noreferrer"
-              className="hover:text-blue-700"
+              rel="noopener noreferrer"
+              className="transition-colors duration-300 hover:text-green-600"
             >
-              WHATSUP
+              WHATSAPP
             </a>
+
             <a
               href="https://www.linkedin.com/in/abdur-ratin/"
               target="_blank"
-              rel="noreferrer"
-              className="hover:text-blue-700"
+              rel="noopener noreferrer"
+              className="transition-colors duration-300 hover:text-blue-700"
             >
               LINKEDIN
             </a>
@@ -70,118 +113,102 @@ export default function ContactSection() {
         </div>
 
         {/* Contact Form */}
-        <div className="bg-linear-to-r from-blue-700 to-cyan-500 p-7 sm:p-10 md:p-12">
-          <h3 className="mb-8 text-2xl font-extrabold text-white sm:text-3xl">
-            ANY PROJECT?
-          </h3>
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-700 via-blue-600 to-cyan-500 p-6 shadow-xl shadow-blue-900/10 sm:p-8 md:p-10 lg:p-12">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/10 blur-2xl"
+          />
 
-          <form
-            onSubmit={async (e) => {
-              e.preventDefault();
+          <div className="relative">
+            <h3 className="mb-8 text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
+              ANY PROJECT?
+            </h3>
 
-              const form = e.currentTarget;
-              const formData = new FormData(form);
+            <form onSubmit={handleSubmit} className="space-y-7">
+              <div className="grid gap-7 sm:grid-cols-2">
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="mb-2 block text-[11px] font-bold tracking-widest text-white/90"
+                  >
+                    NAME
+                  </label>
 
-              setLoading(true);
-              setStatus("");
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    placeholder="Your name"
+                    autoComplete="name"
+                    required
+                    className="w-full border-b border-white/40 bg-transparent px-0 py-3 text-sm text-white outline-none transition-colors duration-300 placeholder:text-white/60 focus:border-white focus:ring-0"
+                  />
+                </div>
 
-              try {
-                const response = await fetch("/api/contact", {
-                  method: "POST",
-                  body: formData,
-                });
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="mb-2 block text-[11px] font-bold tracking-widest text-white/90"
+                  >
+                    EMAIL
+                  </label>
 
-                const result = await response.json();
-
-                if (!response.ok) {
-                  toast.error("Email not send.Try again")
-                    return 
-
-                }
-
-                setStatus(result.message);
-                toast.success(result.message);
-                form.reset();
-              } catch (error) {
-                setStatus(
-                  error instanceof Error ? error.message : "Email not send.Try again",
-                );
-              } finally {
-                setLoading(false);
-              }
-            }}
-            className="space-y-7"
-          >
-            <div className="grid gap-7 sm:grid-cols-2">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="mb-2 block text-[11px] font-medium text-white"
-                >
-                  NAME
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  placeholder="Your name"
-                  required
-                  className="w-full border-b border-neutral-300 bg-transparent pb-2 text-sm text-white outline-none placeholder:text-white/60 focus:border-white"
-                />
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="Your email"
+                    autoComplete="email"
+                    required
+                    className="w-full border-b border-white/40 bg-transparent px-0 py-3 text-sm text-white outline-none transition-colors duration-300 placeholder:text-white/60 focus:border-white focus:ring-0"
+                  />
+                </div>
               </div>
 
               <div>
                 <label
-                  htmlFor="email"
-                  className="mb-2 block text-[11px] font-medium text-white"
+                  htmlFor="message"
+                  className="mb-2 block text-[11px] font-bold tracking-widest text-white/90"
                 >
-                  EMAIL
+                  MESSAGE
                 </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="Your email"
+
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={3}
+                  placeholder="Write your message..."
                   required
-                  className="w-full border-b border-neutral-300 bg-transparent pb-2 text-sm text-white outline-none placeholder:text-white/60 focus:border-white"
+                  className="w-full resize-y border-b border-white/40 bg-transparent px-0 py-3 text-sm leading-6 text-white outline-none transition-colors duration-300 placeholder:text-white/60 focus:border-white focus:ring-0"
                 />
               </div>
-            </div>
 
-            <div>
-              <label
-                htmlFor="message"
-                className="mb-2 block text-[11px] font-medium text-white"
+              <button
+                type="submit"
+                disabled={loading}
+                className="inline-flex min-h-12 min-w-36 items-center justify-center gap-2 rounded-lg bg-neutral-950 px-6 py-3 text-xs font-bold tracking-wide text-white transition-all duration-300 hover:bg-white hover:text-neutral-950 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60"
               >
-                MESSAGE
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={2}
-                placeholder="Write your message..."
-                required
-                className="w-full resize-y border-b border-neutral-300 bg-transparent pb-2 text-sm text-white outline-none placeholder:text-white/60 focus:border-white"
-              />
-            </div>
+                {loading ? (
+                  <>
+                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                    Sending...
+                  </>
+                ) : (
+                  "Submit now"
+                )}
+              </button>
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="flex min-w-36 items-center justify-center gap-2 bg-black px-6 py-3 text-xs font-medium text-white transition-all hover:bg-white hover:text-black disabled:cursor-not-allowed disabled:opacity-60 hover:shadow-lg"
-            >
-              {loading ? "Sending..." : "Submit now"}
-            </button>
-            {status && (
-              <p
-                role="status"
-                aria-live="polite"
-                className="text-sm text-white"
-              >
-                {status}
-              </p>
-            )}
-          </form>
+              {status && (
+                <p
+                  role="status"
+                  aria-live="polite"
+                  className="text-sm leading-6 text-white"
+                >
+                  {status}
+                </p>
+              )}
+            </form>
+          </div>
         </div>
       </div>
     </section>

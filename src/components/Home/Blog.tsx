@@ -45,7 +45,7 @@ export default function Blog() {
           return;
         }
 
-        setError("GitHub projects load করা যায়নি। আবার চেষ্টা করো।");
+        setError("GitHub projects not load");
       } finally {
         if (!controller.signal.aborted) {
           setLoading(false);
@@ -72,8 +72,8 @@ export default function Blog() {
 
   return (
     <section
-      id="blog"
-      className="relative isolate overflow-hidden border-t border-neutral-200 bg-neutral-100 px-5 py-14 text-neutral-950 sm:px-8 sm:py-16 lg:px-10 lg:py-20"
+      id="blogs"
+      className="relative isolate overflow-hidden border-t border-neutral-200 bg-neutral-100 px-5 py-14 text-neutral-950 sm:px-8 sm:py-16 lg:px-10 lg:py-20 scroll-mt-20"
     >
       {/* Background glow */}
       <div className="pointer-events-none absolute -right-32 top-10 -z-10 h-72 w-72 rounded-full bg-cyan-400/10 blur-[100px]" />

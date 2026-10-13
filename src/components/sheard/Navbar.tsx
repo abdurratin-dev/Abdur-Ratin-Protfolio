@@ -2,24 +2,20 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import {
-  FaFacebook,
-  FaGithub,
-  FaLinkedin,
-} from "react-icons/fa";
+import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 
 const navLinks = [
   { label: "Home", href: "/", id: "home" },
-  { label: "About", href: "#about", id: "about" },
+  { label: "About", href: "/#about", id: "about" },
   {
     label: "Specialties",
-    href: "#specialties",
+    href: "/#specialties",
     id: "specialties",
   },
-  { label: "Projects", href: "#projects", id: "projects" },
-  { label: "Blogs", href: "/blogs", id: "blogs" },
-  { label: "Contact", href: "#contact", id: "contact" },
+  { label: "Projects", href: "/#projects", id: "projects" },
+  { label: "Blogs", href: "/#blogs", id: "blogs" },
+  { label: "Contact", href: "/#contact", id: "contact" },
 ];
 
 export default function Navbar() {
@@ -36,6 +32,38 @@ export default function Navbar() {
     setMenuOpen(false);
   };
 
+  useEffect(() => {
+    if (window.location.pathname !== "/") return;
+
+    const sectionIds = ["home", "about", "specialties", "projects","blogs", "contact"];
+
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((section): section is HTMLElement => section !== null);
+
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSections = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+        if (visibleSections.length > 0) {
+          setAcnav(visibleSections[0].target.id);
+        }
+      },
+      {
+        rootMargin: "-20% 0px -60% 0px",
+        threshold: 0,
+      },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       {/* Mobile Top Navbar */}
@@ -44,7 +72,7 @@ export default function Navbar() {
           <Link
             href="/"
             onClick={() => handleNavClick("home")}
-            className="text-2xl font-black tracking-wide"
+            className="text-2xl font-black text-white tracking-wide"
           >
             Ratin<span className="text-cyan-400">.</span>
           </Link>
@@ -56,11 +84,7 @@ export default function Navbar() {
             aria-expanded={menuOpen}
             className="rounded-xl border border-white/10 bg-white/5 p-2.5 text-white transition hover:border-cyan-400/50 hover:text-cyan-400"
           >
-            {menuOpen ? (
-              <HiX size={25} />
-            ) : (
-              <HiMenuAlt3 size={25} />
-            )}
+            {menuOpen ? <HiX size={25} /> : <HiMenuAlt3 size={25} />}
           </button>
         </div>
 
@@ -215,9 +239,7 @@ export default function Navbar() {
 
             <p className="text-[11px] leading-5 text-neutral-500">
               Copyright © {year ?? "2026"} Abdur Ratin.
-              <span className="block">
-                All Rights Reserved.
-              </span>
+              <span className="block">All Rights Reserved.</span>
             </p>
           </div>
         </div>

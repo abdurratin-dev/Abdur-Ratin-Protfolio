@@ -9,7 +9,7 @@ export default function Specialties() {
   return (
     <section
       id="specialties"
-      className="relative overflow-hidden border-t border-neutral-200 bg-neutral-100 text-neutral-900"
+      className="relative overflow-hidden border-t border-neutral-200 bg-neutral-100 text-neutral-900 scroll-mt-20"
     >
       {/* Background glow */}
       <div className="pointer-events-none absolute -right-32 top-20 h-72 w-72 rounded-full bg-cyan-400/10 blur-[100px]" />

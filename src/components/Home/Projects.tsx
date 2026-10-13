@@ -12,9 +12,9 @@ export default function Projects() {
   const testimonial = testimonials[activeTestimonial];
 
   return (
-    <main
+    <section
       id="projects"
-      className="relative overflow-hidden bg-neutral-100 text-neutral-950"
+      className="relative overflow-hidden bg-neutral-100 text-neutral-950 scroll-mt-20"
     >
       {/* Background glow */}
       <div className="pointer-events-none absolute -right-32 top-20 h-72 w-72 rounded-full bg-cyan-400/10 blur-[100px]" />
@@ -219,6 +219,6 @@ export default function Projects() {
           </div>
         </section>
       )}
-    </main>
+    </section>
   );
 }

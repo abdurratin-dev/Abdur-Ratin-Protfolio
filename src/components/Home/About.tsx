@@ -13,7 +13,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="overflow-hidden bg-neutral-100 text-neutral-900"
+      className="overflow-hidden bg-neutral-100 text-neutral-900 scroll-mt-20"
     >
       {/* About Section */}
       <section className="container mx-auto px-5 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-20">

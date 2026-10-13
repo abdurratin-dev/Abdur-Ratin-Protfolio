@@ -18,7 +18,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" className={`${saira.className} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
           <Toaster position="top-right" reverseOrder={false} />
-        <section className="grid grid-cols-[240px_1fr]">
+        <section className="grid md:grid-cols-[240px_1fr]">
           <Navbar />
           <main className="">{children}</main>
         </section>
