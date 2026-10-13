@@ -4,7 +4,7 @@ import { useState } from "react";
 import specialties from "../../../public/api/specialties.json";
 
 export default function Specialties() {
-  const [activeIndex, setActiveIndex] = useState<number | null>(2);
+  const [activeIndex, setActiveIndex] = useState<number | null>();
 
   return (
     <section

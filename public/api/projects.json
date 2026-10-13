@@ -2,31 +2,37 @@
   {
     "title": "Bazar Dor",
     "category": "Groserias ",
-    "image": "https://i.ibb.co.com/MyDM04kS/Screenshot-From-2026-10-12-10-14-14.png"
+    "image": "https://i.ibb.co.com/MyDM04kS/Screenshot-From-2026-10-12-10-14-14.png",
+    "url": "https://bazar-dor-gilt.vercel.app/"
   },
   {
     "title": "Bangla News 24",
     "category": "News",
-    "image": "https://i.ibb.co.com/yFQK2Wb3/Screenshot-From-2026-10-12-10-32-27.png"
+    "image": "https://i.ibb.co.com/yFQK2Wb3/Screenshot-From-2026-10-12-10-32-27.png",
+    "url": "https://bangla-news-24-smoky.vercel.app/"
   },
   {
     "title": "Fit Log",
     "category": "Body building",
-    "image": "https://i.ibb.co.com/v0s64H5/Screenshot-From-2026-10-12-10-36-11.png"
+    "image": "https://i.ibb.co.com/v0s64H5/Screenshot-From-2026-10-12-10-36-11.png",
+    "url": "https://fit-log-drab.vercel.app/"
   },
   {
     "title": "Hero Io",
     "category": "Apps and Games",
-    "image": "https://i.ibb.co.com/cX2V07BY/Screenshot-From-2026-10-13-12-35-27.png"
+    "image": "https://i.ibb.co.com/cX2V07BY/Screenshot-From-2026-10-13-12-35-27.png",
+    "url": "https://hero-io-lilac.vercel.app/"
   },
   {
     "title": "Dev stuck",
     "category": "Technology",
-    "image": "https://i.ibb.co.com/Z6Nmrv73/Screenshot-From-2026-10-13-12-36-56.png"
+    "image": "https://i.ibb.co.com/Z6Nmrv73/Screenshot-From-2026-10-13-12-36-56.png",
+    "url": "https://dev-stuck.vercel.app/"
   },
   {
     "title": "Dreem 11",
     "category": "Cricket",
-    "image": "https://i.ibb.co.com/XZWrz2c0/Screenshot-From-2026-10-13-12-38-22.png"
+    "image": "https://i.ibb.co.com/XZWrz2c0/Screenshot-From-2026-10-13-12-38-22.png",
+    "url": "https://bpl-dream-11-by-abdur-ratin.vercel.app/"
   }
 ]

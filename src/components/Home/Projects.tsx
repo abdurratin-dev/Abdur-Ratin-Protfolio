@@ -38,53 +38,53 @@ export default function Projects() {
             </h2>
 
             <p className="mt-4 max-w-2xl text-sm leading-7 text-neutral-600 sm:text-base">
-              A selection of projects showcasing my skills in building
-              modern, responsive, and user-friendly web applications.
+              A selection of projects showcasing my skills in building modern,
+              responsive, and user-friendly web applications.
             </p>
           </header>
 
           {/* Project grid */}
           <div className="grid grid-cols-1 gap-x-10 gap-y-8 sm:grid-cols-2 lg:gap-x-14 lg:gap-y-10">
-            {projects.slice(0, showAll ? projects.length : 4).map(
-              (project, index) => (
-                <article
-                  key={`${project.title}-${index}`}
-                  className="group grid min-w-0 grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] items-center gap-4 sm:gap-5"
-                >
-                  {/* Project information */}
-                  <div className="flex min-w-0 flex-col items-start py-1">
-                    <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-blue-700 sm:text-xs">
-                      {project.category}
-                    </p>
+            {projects
+              .slice(0, showAll ? projects.length : 4)
+              .map((project, index) => (
+                <a key={`${project.title}-${index}`} href={project.url} target="blunk">
+                  <article
+                    className="group grid min-w-0 grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] items-center gap-4 sm:gap-5"
+                  >
+                    {/* Project information */}
+                    <div className="flex min-w-0 flex-col items-start py-1">
+                      <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-blue-700 sm:text-xs">
+                        {project.category}
+                      </p>
 
-                    <h3 className="text-base font-extrabold leading-snug transition-colors duration-300 group-hover:text-blue-700 sm:text-lg lg:text-xl">
-                      {project.title}
-                    </h3>
+                      <h3 className="text-base font-extrabold leading-snug transition-colors duration-300 group-hover:text-blue-700 sm:text-lg lg:text-xl">
+                        {project.title}
+                      </h3>
 
-                    <a
-                      href="#contact"
-                      aria-label={`View ${project.title}`}
-                      className="mt-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-300 text-xl transition-all duration-300 hover:border-cyan-500 hover:bg-gradient-to-r hover:from-blue-700 hover:to-cyan-500 hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1"
-                    >
-                      ↗
-                    </a>
-                  </div>
+                      <div
+                        aria-label={`View ${project.title}`}
+                        className="mt-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-300 text-xl transition-all duration-300 hover:border-cyan-500 hover:bg-gradient-to-r hover:from-blue-700 hover:to-cyan-500 hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1"
+                      >
+                        ↗
+                      </div>
+                    </div>
 
-                  {/* Project image */}
-                  <div className="relative aspect-[1.15/1] min-w-0 overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-blue-900/10 sm:aspect-[1.27/1]">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      sizes="(max-width: 640px) 45vw, (max-width: 1024px) 40vw, 300px"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
+                    {/* Project image */}
+                    <div className="relative aspect-[1.15/1] min-w-0 overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-blue-900/10 sm:aspect-[1.27/1]">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 640px) 45vw, (max-width: 1024px) 40vw, 300px"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
 
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-blue-950/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  </div>
-                </article>
-              ),
-            )}
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-blue-950/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                    </div>
+                  </article>
+                </a>
+              ))}
           </div>
 
           {/* Load more / Show less */}
@@ -140,9 +140,7 @@ export default function Projects() {
               <div className="absolute left-5 top-8 h-12 w-12 rotate-45 rounded-lg bg-cyan-200/60" />
 
               <div className="relative z-10 flex h-40 w-36 flex-col items-center justify-center rounded-t-full border border-white/30 bg-white/15 p-4 text-center shadow-xl backdrop-blur-md transition-transform duration-300 hover:-translate-y-1 sm:h-48 sm:w-40">
-                <span className="text-5xl font-light leading-none">
-                  “
-                </span>
+                <span className="text-5xl font-light leading-none">“</span>
 
                 <span className="mt-2 text-xs font-bold leading-6 tracking-[0.15em] sm:text-sm">
                   YOUR
@@ -169,9 +167,7 @@ export default function Projects() {
 
               <div className="mt-5">
                 <p className="font-bold">{testimonial.name}</p>
-                <p className="mt-1 text-sm text-white/75">
-                  {testimonial.role}
-                </p>
+                <p className="mt-1 text-sm text-white/75">{testimonial.role}</p>
               </div>
 
               {/* Slider controls */}

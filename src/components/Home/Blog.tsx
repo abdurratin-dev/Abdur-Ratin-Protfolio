@@ -1,22 +1,13 @@
 "use client";
 
+import { IGithubtype } from "@/types/type";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-interface GitHubRepo {
-  id: number;
-  name: string;
-  full_name: string;
-  description: string | null;
-  html_url: string;
-  updated_at: string;
-  language: string | null;
-  stargazers_count: number;
-  fork: boolean;
-}
+
 
 export default function Blog() {
-  const [repos, setRepos] = useState<GitHubRepo[]>([]);
+  const [repos, setRepos] = useState<IGithubtype[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -37,7 +28,7 @@ export default function Blog() {
           throw new Error("Unable to load GitHub repositories.");
         }
 
-        const data: GitHubRepo[] = await response.json();
+        const data: IGithubtype[] = await response.json();
 
         setRepos(data.filter((repo) => !repo.fork));
       } catch (err) {
@@ -176,7 +167,7 @@ export default function Blog() {
                     className="relative block aspect-[4/3] overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-blue-900/10"
                   >
                     <img
-                      src={`https://opengraph.githubassets.com/1/${repo.full_name}`}
+                      src={`${repo.homepage}/favicon.ico`}
                       alt={`${repo.name} GitHub repository preview`}
                       loading="lazy"
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
