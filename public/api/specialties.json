@@ -1,0 +1,50 @@
+[
+  {
+    "title": "FULL STACK WEB DEVELOPMENT",
+    "description": "Building modern, scalable, and responsive web applications using Next.js, React, TypeScript, and JavaScript.",
+    "details": "I develop complete web applications with clean architecture, reusable components, responsive interfaces, and reliable backend integrations.",
+    "technologies": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "image": "https://d1ub0o53i85pdh.cloudfront.net/uploads/2021/09/Facebook-Linkedin-image-template-10.jpg"
+  },
+  {
+    "title": "AI-DRIVEN WEB SOLUTIONS",
+    "description": "Creating smarter digital experiences by integrating AI-powered features into modern web applications.",
+    "details": "I explore AI-assisted development workflows and intelligent application features to build useful, efficient, and user-focused products.",
+    "technologies": [
+      "AI Tools",
+      "Next.js",
+      "JavaScript",
+      "REST API"
+    ],
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOBpvRoqc7eyjH6YazFH3fHjRZAqGXWgosWMeICb66Gn6dJZ7sIw45xTLW&s=10"
+  },
+  {
+    "title": "FRONTEND & UI DEVELOPMENT",
+    "description": "Designing clean, accessible, and responsive interfaces that work smoothly across all screen sizes.",
+    "details": "From pixel-conscious layouts to interactive components, I focus on usability, responsive design, and maintainable frontend code.",
+    "technologies": [
+      "React",
+      "Tailwind CSS",
+      "TypeScript",
+      "Responsive UI"
+    ],
+    "image": "https://assets.wpdeveloper.com/2022/04/Backend_vs_Frontend_Development_What_s_The_Difference_1280_720-1.jpeg"
+  },
+  {
+    "title": "BACKEND & API INTEGRATION",
+    "description": "Connecting frontend applications with APIs, databases, authentication, and server-side functionality.",
+    "details": "I work with server-side logic, API integration, database operations, and authentication to build full-stack experiences.",
+    "technologies": [
+      "Node.js",
+      "REST API",
+      "MongoDB",
+      "Authentication"
+    ],
+    "image": "https://kinsta.com/wp-content/uploads/2021/11/back-end-developer-1200x675.png"
+  }
+]
