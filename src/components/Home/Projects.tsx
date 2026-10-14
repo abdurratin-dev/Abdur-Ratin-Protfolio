@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import testimonials from "../../../public/api/testimonials.json";
 import projects from "../../../public/api/projects.json";
+import ProjectsCard from "../cards/ProjectsCard";
 
 export default function Projects() {
   const [showAll, setShowAll] = useState(false);
@@ -48,42 +48,7 @@ export default function Projects() {
             {projects
               .slice(0, showAll ? projects.length : 4)
               .map((project, index) => (
-                <a key={`${project.title}-${index}`} href={project.url} target="blunk">
-                  <article
-                    className="group grid min-w-0 grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] items-center gap-4 sm:gap-5"
-                  >
-                    {/* Project information */}
-                    <div className="flex min-w-0 flex-col items-start py-1">
-                      <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-blue-700 sm:text-xs">
-                        {project.category}
-                      </p>
-
-                      <h3 className="text-base font-extrabold leading-snug transition-colors duration-300 group-hover:text-blue-700 sm:text-lg lg:text-xl">
-                        {project.title}
-                      </h3>
-
-                      <div
-                        aria-label={`View ${project.title}`}
-                        className="mt-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-300 text-xl transition-all duration-300 hover:border-cyan-500 hover:bg-gradient-to-r hover:from-blue-700 hover:to-cyan-500 hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1"
-                      >
-                        ↗
-                      </div>
-                    </div>
-
-                    {/* Project image */}
-                    <div className="relative aspect-[1.15/1] min-w-0 overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-blue-900/10 sm:aspect-[1.27/1]">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        sizes="(max-width: 640px) 45vw, (max-width: 1024px) 40vw, 300px"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-
-                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-blue-950/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                    </div>
-                  </article>
-                </a>
+                <ProjectsCard key={index} project={project}/>
               ))}
           </div>
 

@@ -3,6 +3,7 @@ import { Saira } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/sheard/Navbar";
 import { Toaster } from "react-hot-toast";
+import Footer from "@/components/sheard/Footer";
 
 const saira = Saira({
   subsets: ["latin"],
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Navbar />
           <main className="">{children}</main>
         </section>
+        <Footer />
       </body>
     </html>
   );

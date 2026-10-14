@@ -3,6 +3,7 @@
 import { IGithubtype } from "@/types/type";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import BlogCard from "../cards/BlogCard";
 
 
 
@@ -48,18 +49,6 @@ export default function Blog() {
 
     return () => controller.abort();
   }, []);
-
-  const formatDate = (date: string) =>
-    new Date(date).toLocaleDateString("en-GB", {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-    });
-
-  const formatTitle = (name: string) =>
-    name
-      .replace(/[-_]/g, " ")
-      .replace(/\b\w/g, (letter) => letter.toUpperCase());
 
   return (
     <section
@@ -154,81 +143,7 @@ export default function Blog() {
           <>
             <div className="grid gap-x-7 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
               {repos.slice(0, 6).map((repo) => (
-                <article
-                  key={repo.id}
-                  className="group flex min-w-0 flex-col"
-                >
-                  {/* GitHub repository preview */}
-                  <a
-                    href={repo.html_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`View ${repo.name} repository`}
-                    className="relative block aspect-[4/3] overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-blue-900/10"
-                  >
-                    <img
-                      src={`${repo.homepage}/favicon.ico`}
-                      alt={`${repo.name} GitHub repository preview`}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-
-                    <span className="absolute right-3 top-3 rounded-full border border-white/40 bg-black/60 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
-                      GitHub ↗
-                    </span>
-                  </a>
-
-                  {/* Repository information */}
-                  <div className="flex flex-1 flex-col pt-4">
-                    <div className="mb-3 flex flex-wrap items-center gap-2 text-xs font-semibold">
-                      <time
-                        dateTime={repo.updated_at}
-                        className="text-neutral-500"
-                      >
-                        Updated {formatDate(repo.updated_at)}
-                      </time>
-
-                      {repo.language && (
-                        <>
-                          <span className="text-neutral-300">/</span>
-                          <span className="text-blue-700">
-                            {repo.language}
-                          </span>
-                        </>
-                      )}
-                    </div>
-
-                    <h3 className="text-lg font-extrabold leading-snug transition-colors duration-300 group-hover:text-blue-700">
-                      <a
-                        href={repo.html_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {formatTitle(repo.name)}
-                      </a>
-                    </h3>
-
-                    <p className="mt-2 line-clamp-3 min-h-[3.75rem] text-sm leading-6 text-neutral-600">
-                      {repo.description ||
-                        "Explore this project and its development history on GitHub."}
-                    </p>
-
-                    <div className="mt-auto flex items-center justify-between gap-3 border-b border-neutral-200 pb-4 pt-5 text-xs">
-                      <span className="font-medium text-neutral-500">
-                        ★ {repo.stargazers_count} stars
-                      </span>
-
-                      <a
-                        href={repo.html_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-bold text-neutral-800 transition-colors hover:text-blue-700"
-                      >
-                        View Project ↗
-                      </a>
-                    </div>
-                  </div>
-                </article>
+                <BlogCard key={repo.id} repo={repo} />
               ))}
             </div>
 

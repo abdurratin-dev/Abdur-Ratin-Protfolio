@@ -12,6 +12,14 @@ export interface ISpeciatlties {
   image: string
 }
 
+export interface IProjectsType {
+  title: string
+  category: string
+  image: string
+  url: string
+}
+
+
 export interface IGithubtype {
   id: number
   node_id: string
